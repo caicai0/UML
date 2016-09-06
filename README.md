@@ -6,6 +6,10 @@
 2. `node extend.js` 运行extend.js,脚本会扫描'../'目录下的所有.h.m文件,并且匹配'@interface([\s]\*)([a-zA-z_][\S]\*)([\s]\*):([\s]\*)([a-zA-z_][\S]*)'把继承关系写到source.js文件中.
 3. 用浏览器打开index.html.
 
+## 示例
+![Example](AFNetworking_demo.png)
+
+
 
 
 
