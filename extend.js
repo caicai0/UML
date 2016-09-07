@@ -42,10 +42,12 @@ async.eachSeries(filePaths,function (item, cb) {
     async.eachSeries(ocFiles,function (item, cb) {
         fs.readFile(item,null,function (err, data) {
             var string = data.toString();
-            var rex = /@interface([\s]*)([a-zA-z_][\S]*)([\s]*):([\s]*)([a-zA-z_][\S]*)/;
-            var classes = rex.exec(string);
-            if (classes && classes.length && classes[5]!='NSObject'){
-                rule.push({source:classes[2],dest:classes[5]});
+            var rex = /@interface([\s]*)([a-zA-Z_][\S]*)([\s]*):([\s]*)([a-zA-Z_][\S]*)/g;
+            var classes ;
+            while (classes = rex.exec(string)){
+                if (classes[5]!='NSObject'){
+                    rule.push({source:classes[2],dest:classes[5]});
+                }
             }
             async.nextTick(function () {
                 cb();
